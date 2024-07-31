@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PerfilCreateUpdate;
 use App\Http\Requests\PerfilUpdate;
+use App\Models\Perfil;
 use App\Models\PerfilUsuario;
 use Exception;
 use Illuminate\Http\RedirectResponse;
@@ -15,7 +16,7 @@ class PerfilController extends Controller
     public function create(PerfilCreateUpdate $request): RedirectResponse
     {
         try{
-            Perfil::create([
+            $perfil = Perfil::create([
                 'nome'=> $request->nome,
                 'descricao'=> $request->descricao,
                 'usuario_criador_id' => Auth()->id
